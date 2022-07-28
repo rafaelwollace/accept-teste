@@ -395,7 +395,7 @@
         }
       }
     },
-    "cors()/api/ofertas": {
+    "/api/lances": {
       "get": {
         "description": "",
         "parameters": [],
@@ -417,25 +417,7 @@
             "schema": {
               "type": "object",
               "properties": {
-                "fk_empresas": {
-                  "example": "any"
-                },
-                "oferta": {
-                  "example": "any"
-                },
-                "descricao": {
-                  "example": "any"
-                },
-                "valor": {
-                  "example": "any"
-                },
-                "quantidade": {
-                  "example": "any"
-                },
-                "saida": {
-                  "example": "any"
-                },
-                "entrega": {
+                "nomeTipo": {
                   "example": "any"
                 }
               }
@@ -452,7 +434,7 @@
         }
       }
     },
-    "cors()/api/ofertas/{id}": {
+    "/api/lances/{id}": {
       "get": {
         "description": "",
         "parameters": [
@@ -506,25 +488,117 @@
             "schema": {
               "type": "object",
               "properties": {
-                "fk_empresas": {
+                "nomeTipo": {
                   "example": "any"
-                },
-                "oferta": {
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "cors()/api/lances": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nomeTipo": {
                   "example": "any"
-                },
-                "descricao": {
-                  "example": "any"
-                },
-                "valor": {
-                  "example": "any"
-                },
-                "quantidade": {
-                  "example": "any"
-                },
-                "saida": {
-                  "example": "any"
-                },
-                "entrega": {
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      }
+    },
+    "cors()/api/lances/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          },
+          "500": {
+            "description": "Internal Server Error"
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "nomeTipo": {
                   "example": "any"
                 }
               }

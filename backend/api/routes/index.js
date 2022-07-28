@@ -1,7 +1,9 @@
 const express = require('express')
+
 const tipos = require('./tiposroute')
 const empresas = require('./empresasroute')
 const ofertas = require('./ofertasroute')
+const lances = require('./lancesroute')
 
 
 const cors = require('cors');
@@ -10,6 +12,7 @@ const cors = require('cors');
     // app.use('/', tipos);
     // app.use('/', empresas);
     // app.use('/', ofertas);
+    // app.use('/', lances);
    
 
 module.exports = app => {
@@ -18,7 +21,8 @@ module.exports = app => {
     express.json(),
     tipos,
     empresas,
-    ofertas
+    ofertas,
+    lances
 
   )
 }

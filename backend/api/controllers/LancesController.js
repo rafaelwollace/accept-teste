@@ -1,13 +1,14 @@
 const Services = require('../services/Services')
-const EmpresasServices = require('../services/EmpresasServices');
-const empresasServices = new Services('Empresas')
-const empresasServicesC = new EmpresasServices()
+const LancesServices = require('../services/LancesServices');
+const lancesServices = new Services('Lances')
+const lancesServicesC = new LancesServices()
 
-class EmpresasController {
+
+class LancesController {
 
   static async read(req, res) {
     try {
-      const read = await empresasServicesC.read()
+      const read = await lancesServicesC.read()
       return res.status(200).json(read)
     } catch (error) {
       return res.status(500).json(error.message)
@@ -17,21 +18,18 @@ class EmpresasController {
   static async readOne(req, res) {  
     const { id } = req.params
     try {
-      const emp = await empresasServicesC.readOne({ id })
-      return res.status(200).json(emp)
+      const reqTipo = await tiposServices.readOne({ id })
+      return res.status(200).json(reqTipo)
     } catch (error) {
       return res.status(500).json(error.message)
     }
   }
 
   static async create(req, res) {
-    const reqEmp = req.body
+    const reqTipo = req.body
     try {
-      const newCliente = await empresasServices.create({ 
-          fk_tipos: req.body.fk_tipos, 
-          nome: req.body.nome, 
-          cnpj: req.body.cnpj, 
-          email: req.body.email 
+      const newCliente = await tiposServices.create({ 
+        nomeTipo: req.body.nomeTipo, 
         })
       return res.status(200).json(newCliente)
     } catch (err) {
@@ -44,17 +42,11 @@ class EmpresasController {
 
   static async update(req, res) {  
     const { id } = req.params
-    const { fk_tipos, nome, cnpj, email  }  = req.body
+    const { nomeTipo }  = req.body
     try {
-      await empresasServices.update(
-          {
-            fk_tipos: fk_tipos, 
-            nome: nome, 
-            cnpj: cnpj, 
-            email: email 
-
-          })
-          return res.status(200).json({ mensagem: `Empresa ID:${id} atualizada` })
+      await tiposServices.update(
+          {nomeTipo:nomeTipo})
+          return res.status(200).json({ mensagem: `Empresa ID:${id} atualizado` })
         } catch (err) {
           return  res.status(500).json({
             message: err.errors.map(e => e.message)
@@ -65,7 +57,7 @@ class EmpresasController {
   static async delete(req, res) {
     const { id } = req.params
     try {
-      await empresasServices.delete(id)
+      await tiposServices.delete(id)
       return res.status(200).json({ mensagem: `id ${id} deletado com sucesso!` })
     } catch (error) {
       return res.status(500).json(error.message)
@@ -76,4 +68,4 @@ class EmpresasController {
 }
 
 
-module.exports = EmpresasController
+module.exports = LancesController
