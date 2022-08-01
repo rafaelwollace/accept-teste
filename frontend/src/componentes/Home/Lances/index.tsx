@@ -42,12 +42,12 @@ const ListaLances = () => {
                                         <tr key={lances.id}>
                                             <td className="text-center">{lances.id}</td>
                                             <td className="text-center">
-
+                                                {lances.Oferta.oferta}
                                             </td>
                                             <td className="text-center">R$:{lances.valor}</td>
                                             <td className="text-center">{lances.volume}</td>
                                             <td className="text-center">{lances.data}</td>
-                                            <td className="text-center">{lances.status === '1' ? "Ativo" : "Finalizado"}</td>
+                                            <td className="text-center">{lances.status === '1' ? <span className="badge bg-success">Arrematado</span> : <span className="badge bg-warning">Ofertado</span>}</td>
                                         </tr>
                                     ))
                                 }

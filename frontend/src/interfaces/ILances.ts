@@ -7,5 +7,5 @@ export default interface ILances {
   valor: number
   status: string
   data: Date
-  Oferta: IOfertas[]
+  Oferta: IOfertas
 }

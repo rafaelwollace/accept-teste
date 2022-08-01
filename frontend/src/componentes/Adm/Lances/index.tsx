@@ -13,14 +13,14 @@ const ListaLances = () => {
         })
     }, []);
 
-    const excluir = (lancesexcluir: ILances) => {
-        console.log('id: ', lancesexcluir.id);
-        http.get<ILances[]>(`lances/${lancesexcluir.id}`)
-            .then(() => {
-                const ListaLances = lances.filter(lances => lances.id !== lancesexcluir.id)
-                setLances([...ListaLances])
-            })
-    }
+    // const excluir = (lancesexcluir: ILances) => {
+    //     console.log('id: ', lancesexcluir.id);
+    //     http.get<ILances[]>(`lances/${lancesexcluir.id}`)
+    //         .then(() => {
+    //             const ListaLances = lances.filter(lances => lances.id !== lancesexcluir.id)
+    //             setLances([...ListaLances])
+    //         })
+    // }
 
     return (
 
@@ -50,23 +50,23 @@ const ListaLances = () => {
                                         <tr key={lances.id}>
                                             <td className="text-center">{lances.id}</td>
                                             <td className="text-center">
-
+                                                {lances.Oferta.oferta}
                                             </td>
                                             <td className="text-center">R$:{lances.valor}</td>
                                             <td className="text-center">{lances.volume}</td>
                                             <td className="text-center">{lances.data}</td>
-                                            <td className="text-center">{lances.status === '1' ? "Ativo" : "Finalizado"}</td>
+                                            <td className="text-center">{lances.status === '1' ? <span className="badge bg-success">Arrematado</span> : <span className="badge bg-warning">Ofertado</span>}</td>
                                             <td className="text-center">
                                                 <div className="btn-group">
-                                                    <Link to={`/edit/${lances.id}`} className="btn btn-primary">
-                                                        <i className="fa fa-edit"></i>
-                                                    </Link>
-                                                    <Link to={`/details/${lances.id}`} className="btn btn-secondary">
-                                                        <i className="fa fa-eye"></i>
-                                                    </Link>
-                                                    <button className="btn btn-danger" onClick={() => excluir(lances)}>
+                                                    {
+                                                        lances.status === '0' ? <Link to={`/edit/${lances.id}`} className="btn btn-primary">
+                                                            <i className="fa fa-check"></i>
+                                                        </Link> : <i className="fa fa-gavel"></i>
+                                                    }
+
+                                                    {/* <button className="btn btn-danger" onClick={() => excluir(lances)}>
                                                         <i className="fa fa-trash"></i>
-                                                    </button>
+                                                    </button> */}
                                                 </div>
                                             </td>
                                         </tr>

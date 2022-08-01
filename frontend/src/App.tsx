@@ -5,6 +5,7 @@ import Empresas from './paginas/Adm/Empresas';
 import Lances from './paginas/Adm/Lances';
 import BaseAdm from './paginas/Adm/BaseAdm';
 import LancesUser from './paginas/Home/Lances';
+import FormLanceUser from './paginas/Home/Lances/FormularioLance';
 import OfertasUser from './paginas/Home/Ofertas';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/lances" element={<LancesUser />} />
+      <Route path="/lances/novo" element={<FormLanceUser />} />
       <Route path="/ofertas" element={<OfertasUser />} />
 
 

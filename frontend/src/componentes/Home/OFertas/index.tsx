@@ -12,7 +12,6 @@ const ListaOfertas = () => {
     useEffect(() => {
         http.get<IOfertas[]>('ofertas').then(result => {
             setOfertas(result.data);
-            console.log(result.data);
         })
     }, []);
 
@@ -29,6 +28,7 @@ const ListaOfertas = () => {
                             <thead className="table-primary">
                                 <tr>
                                     <th className="text-center">Oferta</th>
+                                    <th className="text-center">Empresa</th>
                                     <th className="text-center">Descrição</th>
                                     <th className="text-center">Valor</th>
                                     <th className="text-center">Quantidade</th>
@@ -43,6 +43,7 @@ const ListaOfertas = () => {
 
                                         <tr key={ofertas.id}>
                                             <td className="text-center">{ofertas.oferta}</td>
+                                            <td className="text-center">{ofertas.Empresa.nome}</td>
                                             <td className="text-center">{ofertas.descricao}</td>
                                             <td className="text-center">R$:{ofertas.valor}</td>
                                             <td className="text-center">{ofertas.quantidade}</td>

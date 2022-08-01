@@ -48,7 +48,7 @@ const ListaEmpresas = () => {
 
                                         <tr key={empresas.id}>
                                             <td className="text-center">{empresas.id}</td>
-                                            <td className="text-center">{empresas.fk_tipos}</td>
+                                            <td className="text-center">{empresas.Tipo.nomeTipo}</td>
                                             <td className="text-center">{empresas.nome}</td>
                                             <td className="text-center">{empresas.cnpj}</td>
                                             <td className="text-center">{empresas.email}</td>

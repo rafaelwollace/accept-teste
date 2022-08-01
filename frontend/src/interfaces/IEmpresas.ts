@@ -6,7 +6,6 @@ export default interface IEmpresas {
   nome: string
   cnpj: number
   email: string
-  Tipo: string
-  Tipos: ITipos
+  Tipo: ITipos
 }
 
