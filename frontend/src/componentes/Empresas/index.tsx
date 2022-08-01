@@ -1,26 +1,27 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import IOfertas from '../../interfaces/IOfertas';
 import { Link } from 'react-router-dom';
+import IEmpresas from '../../interfaces/IEmpresas';
 
-const ListaOfertas = () => {
 
-    const [ofertas, setOfertas] = useState<IOfertas[]>([])
+const ListaEmpresas = () => {
 
+    const [empresas, setEmpresas] = useState<IEmpresas[]>([])
+    
 
     useEffect(() => {
-        axios.get('http://localhost:3000/api/ofertas').then(result => {
-            setOfertas(result.data);
-            console.log(result.data);
+        axios.get('http://localhost:3000/api/empresas').then(result => {
+            setEmpresas(result.data);
         })
     }, []);
 
 
     return (
+
         <div className="col-12 col-md-12 py-3">
             <div className="card rounded shadow">
                 <div className="card-header">
-                    <h4 className="text-center">OFERTAS</h4>
+                    <h4 className="text-center">EMPRESAS</h4>
                     <div className="position-relative">
                         <div className="position-absolute top-0 end-0">
                             <button className="btn btn-success">
@@ -34,36 +35,33 @@ const ListaOfertas = () => {
                         <table className="table table-bordered">
                             <thead className="table-primary">
                                 <tr>
-                                    <th className="text-center">Oferta</th>
-                                    <th className="text-center">Descrição</th>
-                                    <th className="text-center">Valor</th>
-                                    <th className="text-center">Quantidade</th>
-                                    <th className="text-center">Endereço de Saída</th>
-                                    <th className="text-center">Endereço de Entrega</th>
+                                    <th className="text-center">ID</th>
+                                    <th className="text-center">Tipo</th>
+                                    <th className="text-center">Nome</th>
+                                    <th className="text-center">CNPJ</th>
+                                    <th className="text-center">E-mail</th>
                                     <th className="text-center">Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 {
-                                    ofertas.map(ofertas => (
+                                    empresas.map(empresas => (
 
-                                        <tr key={ofertas.id}>
-                                            <td className="text-center">{ofertas.oferta}</td>
-                                            <td className="text-center">{ofertas.descricao}</td>
-                                            <td className="text-center">R$:{ofertas.valor}</td>
-                                            <td className="text-center">{ofertas.quantidade}</td>
-                                            <td className="text-center">{ofertas.saida}</td>
-                                            <td className="text-center">{ofertas.entrega}</td>
-
+                                        <tr key={empresas.id}>
+                                            <td className="text-center">{empresas.id}</td>
+                                            <td className="text-center">{empresas.fk_tipos}</td>
+                                            <td className="text-center">{empresas.nome}</td>
+                                            <td className="text-center">{empresas.cnpj}</td>
+                                            <td className="text-center">{empresas.email}</td>
                                             <td className="text-center">
                                                 <div className="btn-group">
-                                                    <Link to={`/edit/${ofertas.id}`} className="btn btn-primary">
+                                                    <Link to={`/edit/${empresas.id}`} className="btn btn-primary">
                                                         <i className="fa fa-edit"></i>
                                                     </Link>
-                                                    <Link to={`/details/${ofertas.id}`} className="btn btn-secondary">
+                                                    <Link to={`/details/${empresas.id}`} className="btn btn-secondary">
                                                         <i className="fa fa-eye"></i>
                                                     </Link>
-                                                    <Link to={`/delete/${ofertas.id}`} className="btn btn-danger">
+                                                    <Link to={`/delete/${empresas.id}`} className="btn btn-danger">
                                                         <i className="fa fa-trash"></i>
                                                     </Link>
                                                 </div>
@@ -77,7 +75,8 @@ const ListaOfertas = () => {
                 </div>
             </div>
         </div>
+
     );
 }
 
-export default ListaOfertas;
+export default ListaEmpresas;

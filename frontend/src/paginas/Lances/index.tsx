@@ -1,6 +1,6 @@
 import React from 'react';
 import Banner from '../../componentes/includes/Banner';
-import Ofertas from '../../componentes/OFertas';
+import Lances from '../../componentes/Lances';
 import NavBar from '../../componentes/includes/NavBar';
 
 
@@ -10,7 +10,7 @@ function App() {
       <NavBar />
       <Banner />
       <div className="container py-3">
-        <Ofertas />
+        <Lances />
       </div>
  
     </>

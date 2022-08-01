@@ -1,15 +1,16 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 import Banner from '../../componentes/includes/Banner';
 import NavBar from '../../componentes/includes/NavBar';
-import Rodape from '../../componentes/includes/Rodape';
+import Home from '../../componentes/Home';
 
 function App() {
   return (
     <>
       <NavBar />
       <Banner />
-      <Rodape />
+      <div className="container py-4">
+        <Home />
+      </div>
     </>
   );
 }
