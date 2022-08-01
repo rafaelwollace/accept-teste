@@ -1,16 +1,15 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import IEmpresas from '../../interfaces/IEmpresas';
+import IEmpresas from '../../../interfaces/IEmpresas';
+import http from '../../../http';
 
 
 const ListaEmpresas = () => {
 
     const [empresas, setEmpresas] = useState<IEmpresas[]>([])
-    
 
     useEffect(() => {
-        axios.get('http://localhost:3000/api/empresas').then(result => {
+        http.get<IEmpresas[]>('empresas').then(result => {
             setEmpresas(result.data);
         })
     }, []);
@@ -25,13 +24,13 @@ const ListaEmpresas = () => {
                     <div className="position-relative">
                         <div className="position-absolute top-0 end-0">
                             <button className="btn btn-success">
-                                <i className='fas fa-plus-circle'></i><span> CADASTRAR</span>
+                                <i className='fa fa-plus'></i><span> CADASTRAR</span>
                             </button>
                         </div>
                     </div>
                 </div>
                 <div className="card-body">
-                    <div className="table-responsive">
+                    <div className="table-responsive  py-3">
                         <table className="table table-bordered">
                             <thead className="table-primary">
                                 <tr>

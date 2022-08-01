@@ -1,3 +1,5 @@
+import ITipos from "./ITipos";
+
 export default interface IEmpresas {
   id: number
   fk_tipos: number
@@ -5,5 +7,6 @@ export default interface IEmpresas {
   cnpj: number
   email: string
   Tipo: string
+  Tipos: ITipos
 }
 

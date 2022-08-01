@@ -5,12 +5,12 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
-function BasicExample() {
+function NavBar() {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
         <Navbar.Brand as={Link} to="/">Logo</Navbar.Brand>
-        <Navbar.Toggle aria-controls="basic-navbar-nav"/>
+        <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav" className="justify-content-end">
           <Nav >
             <Nav.Link as={Link} to="/">Home</Nav.Link>
@@ -18,9 +18,7 @@ function BasicExample() {
             <NavDropdown title="Administração" id="basic-nav-dropdown">
               <NavDropdown.Item as={Link} to="/ofertas">Ofertas</NavDropdown.Item>
               <NavDropdown.Divider />
-              <NavDropdown.Item as={Link} to="/empresas">Empresas</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item as={Link} to="/lances">Lances</NavDropdown.Item>
+              <NavDropdown.Item as={Link} to="/lances">Meus Lances</NavDropdown.Item>
             </NavDropdown>
           </Nav>
         </Navbar.Collapse>
@@ -29,4 +27,4 @@ function BasicExample() {
   );
 }
 
-export default BasicExample;
+export default NavBar;

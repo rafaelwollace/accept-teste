@@ -9,5 +9,5 @@ export default interface IOfertas {
   quantidade: number
   saida: string
   entrega: string
-  Empresa: IEmpresas[]
+  Empresa: IEmpresas
 }

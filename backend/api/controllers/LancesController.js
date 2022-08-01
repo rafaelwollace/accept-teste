@@ -18,7 +18,7 @@ class LancesController {
   static async readOne(req, res) {  
     const { id } = req.params
     try {
-      const reqTipo = await tiposServices.readOne({ id })
+      const reqTipo = await lancesServicesC.readOne({ id })
       return res.status(200).json(reqTipo)
     } catch (error) {
       return res.status(500).json(error.message)
@@ -28,7 +28,7 @@ class LancesController {
   static async create(req, res) {
     const reqTipo = req.body
     try {
-      const newCliente = await tiposServices.create({ 
+      const newCliente = await lancesServices.create({ 
         nomeTipo: req.body.nomeTipo, 
         })
       return res.status(200).json(newCliente)
@@ -44,7 +44,7 @@ class LancesController {
     const { id } = req.params
     const { nomeTipo }  = req.body
     try {
-      await tiposServices.update(
+      await lancesServices.update(
           {nomeTipo:nomeTipo})
           return res.status(200).json({ mensagem: `Empresa ID:${id} atualizado` })
         } catch (err) {
@@ -57,7 +57,7 @@ class LancesController {
   static async delete(req, res) {
     const { id } = req.params
     try {
-      await tiposServices.delete(id)
+      await lancesServices.delete(id)
       return res.status(200).json({ mensagem: `id ${id} deletado com sucesso!` })
     } catch (error) {
       return res.status(500).json(error.message)

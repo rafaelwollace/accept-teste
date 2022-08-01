@@ -1,7 +1,8 @@
-import axios from 'axios';
 import { useEffect, useState } from 'react';
-import IOfertas from '../../interfaces/IOfertas';
+import IOfertas from '../../../interfaces/IOfertas';
 import { Link } from 'react-router-dom';
+import http from "../../../http"
+
 
 const ListaOfertas = () => {
 
@@ -9,7 +10,7 @@ const ListaOfertas = () => {
 
 
     useEffect(() => {
-        axios.get('http://localhost:3000/api/ofertas').then(result => {
+        http.get<IOfertas[]>('ofertas').then(result => {
             setOfertas(result.data);
             console.log(result.data);
         })
@@ -21,13 +22,6 @@ const ListaOfertas = () => {
             <div className="card rounded shadow">
                 <div className="card-header">
                     <h4 className="text-center">OFERTAS</h4>
-                    <div className="position-relative">
-                        <div className="position-absolute top-0 end-0">
-                            <button className="btn btn-success">
-                                <i className='fas fa-plus-circle'></i><span> CADASTRAR</span>
-                            </button>
-                        </div>
-                    </div>
                 </div>
                 <div className="card-body">
                     <div className="table-responsive">
@@ -40,7 +34,7 @@ const ListaOfertas = () => {
                                     <th className="text-center">Quantidade</th>
                                     <th className="text-center">Endereço de Saída</th>
                                     <th className="text-center">Endereço de Entrega</th>
-                                    <th className="text-center">Ações</th>
+                                    <th className="text-center">Arrematar ?</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -57,14 +51,8 @@ const ListaOfertas = () => {
 
                                             <td className="text-center">
                                                 <div className="btn-group">
-                                                    <Link to={`/edit/${ofertas.id}`} className="btn btn-primary">
-                                                        <i className="fa fa-edit"></i>
-                                                    </Link>
-                                                    <Link to={`/details/${ofertas.id}`} className="btn btn-secondary">
-                                                        <i className="fa fa-eye"></i>
-                                                    </Link>
-                                                    <Link to={`/delete/${ofertas.id}`} className="btn btn-danger">
-                                                        <i className="fa fa-trash"></i>
+                                                    <Link to={`/lances/${ofertas.id}`} className="btn btn-success">
+                                                        <i className="fa fa-gavel"></i>
                                                     </Link>
                                                 </div>
                                             </td>
