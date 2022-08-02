@@ -6,6 +6,7 @@ import Lances from './paginas/Adm/Lances';
 import BaseAdm from './paginas/Adm/BaseAdm';
 import LancesUser from './paginas/Home/Lances';
 import OfertasUser from './paginas/Home/Ofertas';
+import Login from './paginas/Home/Login';
 
 function App() {
 
@@ -14,7 +15,7 @@ function App() {
       <Route path="/" element={<Home />} />
       <Route path="/lances" element={<LancesUser />} />
       <Route path="/ofertas" element={<OfertasUser />} />
-
+      <Route path="/login" element={<Login />} />
 
       <Route path='/adm' element={<BaseAdm />}>
         <Route path="ofertas" element={<Ofertas />} />
