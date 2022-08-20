@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import ILances from '../../../interfaces/ILances';
 import http from "../../../http"
+import { toast } from 'react-toastify';
+
 
 
 const ListaLances = () => {
@@ -13,16 +15,19 @@ const ListaLances = () => {
         })
     }, []);
 
-    // const excluir = (lancesexcluir: ILances) => {
-    //     console.log('id: ', lancesexcluir.id);
-    //     http.get<ILances[]>(`lances/${lancesexcluir.id}`)
-    //         .then(() => {
-    //             const ListaLances = lances.filter(lances => lances.id !== lancesexcluir.id)
-    //             setLances([...ListaLances])
-    //         })
-    // }
+    const excluir = (lancesexcluir: ILances) => {
+        http.delete<ILances[]>(`lances/${lancesexcluir.id}`)
+            .then(() => {
+                const ListaLances = lances.filter(lances => lances.id !== lancesexcluir.id)
+                setLances([...ListaLances])
+                toast.error(`Cadastro ${lancesexcluir.id} deletado!`);
+            })
+    }
+
+
 
     return (
+
 
         <div className="col-12 col-md-12 py-3">
             <div className="card rounded shadow">
@@ -59,14 +64,16 @@ const ListaLances = () => {
                                             <td className="text-center">
                                                 <div className="btn-group">
                                                     {
-                                                        lances.status === '0' ? <Link to={`/edit/${lances.id}`} className="btn btn-primary">
+                                                        lances.status === '0' ? <Link to={`/ edit / ${lances.id}`} className="btn btn-primary">
                                                             <i className="fa fa-check"></i>
                                                         </Link> : <i className="fa fa-gavel"></i>
                                                     }
 
-                                                    {/* <button className="btn btn-danger" onClick={() => excluir(lances)}>
+                                                    {<button className="btn btn-danger" onClick={() => excluir(lances)}>
                                                         <i className="fa fa-trash"></i>
-                                                    </button> */}
+                                                    </button>}
+
+
                                                 </div>
                                             </td>
                                         </tr>
